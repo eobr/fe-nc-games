@@ -2,18 +2,66 @@ body {
   margin-left: 0%;
   margin-top: 0%;
   margin-right: 0%;
+  font-family: Arial;
+  background-color: rgb(233, 227, 180);
 }
 
 .App {
   display: flex;
   flex-direction: row;
+  
 
 }
 
 .topbar {
   width: 100vw;
   height: 20vh;
-  background-color: rgb(226, 125, 58);
-  color: white;
+  background-color: rgb(243, 155, 109);
+  color: rgb(56, 29, 42);
   margin-right: 0px;
+  font-family: Arial;
+  font-size: larger;
+  position: fixed;
 }
+
+.userDetails {
+  height: 20vh;
+  background-color: rgb(62, 105, 144);
+  position: fixed;
+  margin-top: 0%;
+  right: 0px;
+  width: 300px;
+  padding: 10px;
+}
+
+.avatar {
+  width: 80px;
+  border-radius: 20px;
+}
+
+.reviews {
+  position: absolute;
+  margin-top: 20vh;
+  padding-left: 20px;
+}
+
+.reviewImg {
+  width: 100px;
+}
+
+.reviewCard {
+  z-index: 1;
+  background-color: rgb(170, 189, 140);
+  padding: 5%;
+  border-radius: 20px;
+  width: 70vw;
+  margin-left: 8vw;
+}
+
+.filter {
+  margin-top: -4vh;
+  position: fixed;
+}
+
+/* background-color: rgb(170, 189, 140); oliveine
+background-color: rgb(56, 29, 42); dark purple */
