@@ -10,14 +10,6 @@ export const fetchUserByUsername = (username) => {
   });
 };
 
-// export const fetchReviews = () => {
-//   return boardGamesAPI
-//     .get(`/reviews`)
-//     .then((res) => {
-//       return res.data;
-//     });
-// };
-
 export const fetchReviews = (sort_by, category, order) => {
   return boardGamesAPI
     .get(`/reviews`, { params: { sort_by, category, order } })
@@ -31,3 +23,19 @@ export const fetchCategories = () => {
     return res.data;
   });
 };
+
+export const fetchReviewById = (review_id) => {
+  return boardGamesAPI.get(`/reviews/${review_id}`).then(res => {
+    return res.data;
+  })
+}
+
+export const fetchCommentByReview = (review_id) => {
+  return boardGamesAPI.get(`/reviews/${review_id}/comments`).then(res => {
+    return res.data;
+  })
+}
+
+export const postComment = (review_id, comment) => {
+  return boardGamesAPI.post(`/reviews/${review_id}/comments`, comment)
+}

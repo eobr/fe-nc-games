@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ReviewCard({ review }) {
   return (
@@ -14,6 +15,9 @@ export default function ReviewCard({ review }) {
           {review.created_at.slice(0, 10)}
         </p>
         <p><b>Comments: </b>{review.comment_count}</p>
+        <nav>
+            <Link to={`/reviews/${review.review_id}`}>View</Link>
+        </nav>
       </div>
       <br />
     </>

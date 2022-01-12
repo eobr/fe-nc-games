@@ -36,7 +36,6 @@ export default function Reviews() {
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchReviews(sortBy, selectedCategory, order).then((data) => {
-      console.log(data);
       setReviewsList(data);
     });
   };
