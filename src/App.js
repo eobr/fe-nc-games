@@ -14,6 +14,7 @@ import ReviewPage from "./components/ReviewPage";
 function App() {
   const [username, setUsername] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
 
   return (
     <BrowserRouter>
@@ -27,9 +28,10 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           isLoggedIn={isLoggedIn}
           setUsername={setUsername}
+          
         />
         <Routes>
-          <Route path="/" element={<Reviews />}></Route>
+          <Route path="/" element={<Reviews username={username}/>}></Route>
           <Route
             path="/reviews/:review_id"
             element={<ReviewPage username={username} isLoggedIn={isLoggedIn} />}

@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { fetchUserByUsername } from "../utils/api";
 
 export default function UserDetails({ setUsername, username, isLoggedIn, setIsLoggedIn }) {
-  const [userData, setUserData] = useState([]);
   const initialRender = useRef(true);
   const [usernameInput, setUsernameInput] = useState("");
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     if (initialRender.current) {

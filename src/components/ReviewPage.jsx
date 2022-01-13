@@ -34,9 +34,6 @@ export default function ReviewPage({ isLoggedIn, username }) {
       username,
       body: bodyInput,
     };
-    setComments((currComments) => {
-      return [...currComments, newComment];
-    });
     postComment(review_id, newComment);
   };
 
@@ -92,7 +89,7 @@ export default function ReviewPage({ isLoggedIn, username }) {
         <div>
           {comments.length
             ? comments.map((comment) => {
-                return <Comments comment={comment} />;
+                return <Comments comment={comment} username={username} isLoggedIn={isLoggedIn} />;
               })
             : null}
         </div>

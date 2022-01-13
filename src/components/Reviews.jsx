@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchCategories, fetchReviews } from "../utils/api";
+import { formatCategory } from "../utils/util-functions";
 import ReviewCard from "./ReviewCard";
 
-export default function Reviews() {
-  /*
-    no filter state - get.reviews
-    filter category query
-    sortby sortby query
-    order query
-    use states for this?
-    */
-
+export default function Reviews({username}) {
   const [order, setOrder] = useState(undefined);
   const [selectedCategory, setSelectedCategory] = useState(undefined);
   const [sortBy, setSortBy] = useState(undefined);
@@ -81,7 +74,7 @@ export default function Reviews() {
           <select value={selectedCategory} onChange={handleCategory}>
             <option value="">All</option>
             {allCategories.map((category) => {
-              return <option value={category.slug}>{category.slug}</option>;
+              return <option value={category.slug}>{formatCategory(category.slug)}</option>;
             })}
           </select>
         </label>
@@ -89,7 +82,7 @@ export default function Reviews() {
       </form>
       <div>
         {reviewsList.map((review) => {
-          return <ReviewCard review={review} />;
+          return <ReviewCard review={review} username={username}/>;
         })}
       </div>
     </div>

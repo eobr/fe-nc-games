@@ -83,5 +83,13 @@ body {
   margin-left: 8vw;
 }
 
+.commentAuthor {
+  display: inline;
+}
+
+.deleteCommentButton {
+  margin-left: 2%;
+}
+
 /* background-color: rgb(170, 189, 140); oliveine
 background-color: rgb(56, 29, 42); dark purple */

@@ -39,3 +39,17 @@ export const fetchCommentByReview = (review_id) => {
 export const postComment = (review_id, comment) => {
   return boardGamesAPI.post(`/reviews/${review_id}/comments`, comment)
 }
+
+export const deleteComment = (comment_id) => {
+  return boardGamesAPI.delete(`/comments/${comment_id}`);
+}
+
+export const likeReview = (review_id) => {
+  return boardGamesAPI.patch(`/reviews/${review_id}`, {inc_votes: 1});
+}
+
+export const unlikeReview = (review_id) => {
+  return boardGamesAPI.patch(`/reviews/${review_id}`, {inc_votes: -1});
+}
+
+

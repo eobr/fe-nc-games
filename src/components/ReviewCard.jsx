@@ -1,22 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { likeReview, unlikeReview } from "../utils/api";
+import { formatCategory } from "../utils/util-functions";
 
-export default function ReviewCard({ review }) {
+export default function ReviewCard({ review, username}) {
+  const [liked, setLiked] = useState(false);
+  const [amountLikes, setAmountLikes] = useState(review.votes);
+  const handleLike = () => {
+    if (username) {
+      likeReview(review.review_id);
+      setLiked(true)
+      setAmountLikes((currLikes) => currLikes + 1)
+    }
+  };
+  const handleUnlike = () => {
+    if (username) {
+      unlikeReview(review.review_id);
+      setLiked(false)
+      setAmountLikes((currLikes) => currLikes - 1)
+    }
+  };
+
   return (
     <>
       <div className="reviewCard">
         <h3>{`${review.title}`}</h3>
-        <p>Author: {review.owner}</p>
+        <p>
+          <b>Author: </b>
+          {review.owner}
+        </p>
         <p>{`${review.review_body}`}</p>
         <img className="reviewImg" src={review.review_img_url} />
         <p>
-          <b>Votes: </b> {review.votes} <b>Category: </b>{" "}
-          {review.category.replaceAll("-", " ")} <b>Date: </b>{" "}
+          <b>Category: </b> {formatCategory(review.category)} <b>Date: </b>{" "}
           {review.created_at.slice(0, 10)}
         </p>
-        <p><b>Comments: </b>{review.comment_count}</p>
+        <p>
+          {" "}
+          <b>Likes: </b> {amountLikes}{" "}
+        </p>
+        {liked ? <button onClick={handleUnlike}>👎</button>: <button onClick={handleLike}>👍</button>}
+        {username ? null : <p>Please login to vote!</p>}
+        
+        <p>
+          <b>Comments: </b>
+          {review.comment_count}{" "}
+        </p>
         <nav>
-            <Link to={`/reviews/${review.review_id}`}>View</Link>
+          <Link to={`/reviews/${review.review_id}`}>View</Link>
         </nav>
       </div>
       <br />
