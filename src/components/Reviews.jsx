@@ -3,7 +3,7 @@ import { fetchCategories, fetchReviews } from "../utils/api";
 import { formatCategory } from "../utils/util-functions";
 import ReviewCard from "./ReviewCard";
 
-export default function Reviews({username}) {
+export default function Reviews({isLoggedIn}) {
   const [order, setOrder] = useState(undefined);
   const [selectedCategory, setSelectedCategory] = useState(undefined);
   const [sortBy, setSortBy] = useState(undefined);
@@ -82,7 +82,7 @@ export default function Reviews({username}) {
       </form>
       <div>
         {reviewsList.map((review) => {
-          return <ReviewCard review={review} username={username}/>;
+          return <ReviewCard review={review} isLoggedIn={isLoggedIn}/>;
         })}
       </div>
     </div>

@@ -1,22 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchUserByUsername } from "../utils/api";
 
-export default function UserDetails({ setUsername, username, isLoggedIn, setIsLoggedIn }) {
-  const initialRender = useRef(true);
+export default function UserDetails({
+  isLoggedIn,
+  setIsLoggedIn,
+}) {
   const [usernameInput, setUsernameInput] = useState("");
   const [userData, setUserData] = useState([]);
+  const [loginErr, setLoginErr] = useState("");
 
-  useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
-    } else {
-      fetchUserByUsername(username).then((userInfo) => {
-        console.log(userInfo);
-        setUserData(userInfo);
-        setIsLoggedIn(true);
-      });
-    }
-  }, [username]);
 
   const handleLogout = (event) => {
     event.preventDefault();
@@ -30,10 +22,16 @@ export default function UserDetails({ setUsername, username, isLoggedIn, setIsLo
 
   const handleLogin = (event) => {
     event.preventDefault();
-    setUsername(usernameInput);
-    setUsernameInput("");
+    fetchUserByUsername(usernameInput).then((userInfo) => {
+      setUserData(userInfo);
+      setIsLoggedIn(true);
+      setUsernameInput("");
+      setLoginErr("");
+    })
+    .catch(() => {
+      setLoginErr("User not found!")
+    })
   };
-
 
   return (
     <div className="userDetails">
@@ -45,7 +43,7 @@ export default function UserDetails({ setUsername, username, isLoggedIn, setIsLo
           <button className="logout" onClick={handleLogout}>
             Logout
           </button>
-        {/* SELL AN ITEM LINK */}
+          {/* SELL AN ITEM LINK */}
         </>
       ) : (
         <form className="login" onSubmit={handleLogin}>
@@ -55,7 +53,8 @@ export default function UserDetails({ setUsername, username, isLoggedIn, setIsLo
             onChange={handleUsernameChange}
             value={usernameInput}
           ></input>
-          <button type='submit'>Login</button>
+          <button type="submit">Login</button>
+          <p>{loginErr}</p>
         </form>
       )}
     </div>

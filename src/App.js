@@ -12,7 +12,6 @@ import Reviews from "./components/Reviews";
 import ReviewPage from "./components/ReviewPage";
 
 function App() {
-  const [username, setUsername] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
 
@@ -24,17 +23,14 @@ function App() {
         </div>
 
         <UserDetails
-          username={username}
           setIsLoggedIn={setIsLoggedIn}
-          isLoggedIn={isLoggedIn}
-          setUsername={setUsername}
-          
+          isLoggedIn={isLoggedIn}          
         />
         <Routes>
-          <Route path="/" element={<Reviews username={username}/>}></Route>
+          <Route path="/" element={<Reviews isLoggedIn={isLoggedIn}/>}></Route>
           <Route
             path="/reviews/:review_id"
-            element={<ReviewPage username={username} isLoggedIn={isLoggedIn} />}
+            element={<ReviewPage isLoggedIn={isLoggedIn} />}
           ></Route>
         </Routes>
       </div>
