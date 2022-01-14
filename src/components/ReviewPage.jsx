@@ -12,13 +12,17 @@ export default function ReviewPage({ isLoggedIn, userData }) {
   const [comments, setComments] = useState([]);
   const [bodyInput, setBodyInput] = useState("");
   const [refreshComments, setRefreshComments] = useState(false);
-
+  const [errMsg, setErrMsg] = useState("");
   const { review_id } = useParams();
 
   useEffect(() => {
-    fetchReviewById(review_id).then((reviewFromAPI) => {
-      setReviewInfo(reviewFromAPI.review);
-    });
+    fetchReviewById(review_id)
+      .then((reviewFromAPI) => {
+        setReviewInfo(reviewFromAPI.review);
+      })
+      .catch((err) => {
+        setErrMsg(err.response.data);
+      });
   }, []);
   useEffect(() => {
     fetchCommentByReview(review_id).then((commentsFromAPI) => {
@@ -40,7 +44,9 @@ export default function ReviewPage({ isLoggedIn, userData }) {
     postComment(review_id, newComment);
   };
 
-  return (
+  return errMsg ? (
+    <h1 className="errMsg">{errMsg}</h1>
+  ) : (
     <div className="reviewPage">
       <nav>
         <Link to="/">Home</Link>

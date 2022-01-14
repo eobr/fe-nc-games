@@ -99,5 +99,12 @@ body {
   display: inline;
 }
 
+.errMsg {
+  position: absolute;
+  margin-top: 24vh;
+  margin-left: 10px;
+  padding: 20px;
+}
+
 /* background-color: rgb(170, 189, 140); oliveine
 background-color: rgb(56, 29, 42); dark purple */
