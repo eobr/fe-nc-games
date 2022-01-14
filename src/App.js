@@ -10,10 +10,11 @@ import { useState } from "react";
 import UserDetails from "./components/UserDetails";
 import Reviews from "./components/Reviews";
 import ReviewPage from "./components/ReviewPage";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState(undefined);
   
 
   return (
@@ -29,11 +30,13 @@ function App() {
           userData={userData} setUserData={setUserData}          
         />
         <Routes>
-          <Route path="/" element={<Reviews isLoggedIn={isLoggedIn}/>}></Route>
+          <Route path="/" element={<Reviews isLoggedIn={isLoggedIn}/>}/>
           <Route
             path="/reviews/:review_id"
             element={<ReviewPage isLoggedIn={isLoggedIn} userData={userData}/>}
-          ></Route>
+          />
+          <Route path="*" element={<PageNotFound/>}/>
+          
         </Routes>
       </div>
     </BrowserRouter> 

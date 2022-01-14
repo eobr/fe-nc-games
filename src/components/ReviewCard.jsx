@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { likeReview, unlikeReview } from "../utils/api";
 import { formatCategory } from "../utils/util-functions";
 
-export default function ReviewCard({ review, isLoggedIn}) {
+export default function ReviewCard({ review, isLoggedIn, sortBy}) {
   const [liked, setLiked] = useState(false);
   const [amountLikes, setAmountLikes] = useState(review.votes);
   const handleLike = () => {
     if (isLoggedIn) {
-      likeReview(review.review_id);
+      likeReview(review.review_id); //patch API Call
       setLiked(true)
       setAmountLikes((currLikes) => currLikes + 1)
     }
   };
+  useEffect(() => {
+    console.log(review.votes); 
+    setAmountLikes(review.votes);
+  }, [sortBy])
   const handleUnlike = () => {
     if (isLoggedIn) {
       unlikeReview(review.review_id);

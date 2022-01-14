@@ -11,6 +11,7 @@ export const fetchUserByUsername = (username) => {
 };
 
 export const fetchReviews = (sort_by, category, order) => {
+  console.log(sort_by)
   return boardGamesAPI
     .get(`/reviews`, { params: { sort_by, category, order } })
     .then((res) => {
@@ -50,6 +51,12 @@ export const likeReview = (review_id) => {
 
 export const unlikeReview = (review_id) => {
   return boardGamesAPI.patch(`/reviews/${review_id}`, {inc_votes: -1});
+}
+
+export const fetchUsers = () => {
+  return boardGamesAPI.get('/users').then(res => {
+    return res.data;
+  })
 }
 
 

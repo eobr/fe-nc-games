@@ -26,11 +26,18 @@ export default function Reviews({isLoggedIn}) {
     setSelectedCategory(event.target.value)
     else setSelectedCategory(undefined)
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchReviews(sortBy, selectedCategory, order).then((data) => {
+
+  useEffect(() => {
+    console.log(sortBy, selectedCategory, order);
+      fetchReviews(sortBy, selectedCategory, order).then((data) => {
       setReviewsList(data);
     });
+  }, [sortBy, selectedCategory, order])
+  const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   fetchReviews(sortBy, selectedCategory, order).then((data) => {
+  //     setReviewsList(data);
+  //   });
   };
 
   useEffect(() => {
@@ -82,7 +89,7 @@ export default function Reviews({isLoggedIn}) {
       </form>
       <div>
         {reviewsList.map((review) => {
-          return <ReviewCard review={review} isLoggedIn={isLoggedIn}/>;
+          return <ReviewCard review={review} isLoggedIn={isLoggedIn} sortBy={sortBy}/>;
         })}
       </div>
     </div>

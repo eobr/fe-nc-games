@@ -8,7 +8,7 @@ import {
 import Comments from "./Comments";
 
 export default function ReviewPage({ isLoggedIn, userData }) {
-  const [reviewInfo, setReviewInfo] = useState([]);
+  const [reviewInfo, setReviewInfo] = useState(undefined);
   const [comments, setComments] = useState([]);
   const [bodyInput, setBodyInput] = useState("");
   const [refreshComments, setRefreshComments] = useState(false);
@@ -46,7 +46,7 @@ export default function ReviewPage({ isLoggedIn, userData }) {
 
   return errMsg ? (
     <h1 className="errMsg">{errMsg}</h1>
-  ) : (
+  ) : reviewInfo ? (
     <div className="reviewPage">
       <nav>
         <Link to="/">Home</Link>
@@ -111,5 +111,5 @@ export default function ReviewPage({ isLoggedIn, userData }) {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
