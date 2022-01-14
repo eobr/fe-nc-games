@@ -4,9 +4,10 @@ import { fetchUserByUsername } from "../utils/api";
 export default function UserDetails({
   isLoggedIn,
   setIsLoggedIn,
+  userData, setUserData
 }) {
   const [usernameInput, setUsernameInput] = useState("");
-  const [userData, setUserData] = useState([]);
+  
   const [loginErr, setLoginErr] = useState("");
 
 

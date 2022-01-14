@@ -7,7 +7,8 @@ import {
 } from "../utils/api";
 import Comments from "./Comments";
 
-export default function ReviewPage({ isLoggedIn, username }) {
+export default function ReviewPage({ isLoggedIn, userData }) {
+  
   const [reviewInfo, setReviewInfo] = useState([]);
   const [comments, setComments] = useState([]);
   const [bodyInput, setBodyInput] = useState("");
@@ -31,7 +32,7 @@ export default function ReviewPage({ isLoggedIn, username }) {
   const handlePostComment = (event) => {
     event.preventDefault();
     const newComment = {
-      username,
+      username: userData.username,
       body: bodyInput,
     };
     postComment(review_id, newComment);
@@ -89,7 +90,7 @@ export default function ReviewPage({ isLoggedIn, username }) {
         <div>
           {comments.length
             ? comments.map((comment) => {
-                return <Comments comment={comment} username={username} isLoggedIn={isLoggedIn} />;
+                return <Comments comment={comment} userData={userData} isLoggedIn={isLoggedIn} />;
               })
             : null}
         </div>

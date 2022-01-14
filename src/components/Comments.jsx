@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { deleteComment } from "../utils/api";
 
-export default function Comments({ comment, username, isLoggedIn }) {
-
+export default function Comments({ comment, userData, isLoggedIn }) {
   let loggedInUser = false;
-  if (comment.author === username) loggedInUser = true;
+  if (comment.author === userData.username) loggedInUser = true;
   else loggedInUser = false;
 
   const handleDeleteComment = (event) => {

@@ -91,5 +91,13 @@ body {
   margin-left: 2%;
 }
 
+.likeButton {
+  display: inline;
+}
+
+.dislikeButton {
+  display: inline;
+}
+
 /* background-color: rgb(170, 189, 140); oliveine
 background-color: rgb(56, 29, 42); dark purple */

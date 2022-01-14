@@ -39,7 +39,7 @@ export default function ReviewCard({ review, isLoggedIn}) {
           {" "}
           <b>Likes: </b> {amountLikes}{" "}
         </p>
-        {liked ? <button onClick={handleUnlike}>👎</button>: <button onClick={handleLike}>👍</button>}
+        {liked ? <button onClick={handleUnlike} className="likeButton">👎</button>: <button className="unlikeButton" onClick={handleLike}>👍</button>}
         {isLoggedIn ? null : <p>Please login to vote!</p>}
         
         <p>
