@@ -8,10 +8,10 @@ import {
 import Comments from "./Comments";
 
 export default function ReviewPage({ isLoggedIn, userData }) {
-  
   const [reviewInfo, setReviewInfo] = useState([]);
   const [comments, setComments] = useState([]);
   const [bodyInput, setBodyInput] = useState("");
+  const [refreshComments, setRefreshComments] = useState(false);
 
   const { review_id } = useParams();
 
@@ -23,14 +23,16 @@ export default function ReviewPage({ isLoggedIn, userData }) {
   useEffect(() => {
     fetchCommentByReview(review_id).then((commentsFromAPI) => {
       setComments(commentsFromAPI);
+      setRefreshComments(false);
     });
-  }, [comments]);
+  }, [refreshComments]); // this is potentially infinte looping
 
   const handleBodyInput = (event) => {
     setBodyInput(event.target.value);
   };
   const handlePostComment = (event) => {
     event.preventDefault();
+    setRefreshComments(true);
     const newComment = {
       username: userData.username,
       body: bodyInput,
@@ -90,7 +92,14 @@ export default function ReviewPage({ isLoggedIn, userData }) {
         <div>
           {comments.length
             ? comments.map((comment) => {
-                return <Comments comment={comment} userData={userData} isLoggedIn={isLoggedIn} />;
+                return (
+                  <Comments
+                    comment={comment}
+                    userData={userData}
+                    isLoggedIn={isLoggedIn}
+                    setRefreshComments={setRefreshComments}
+                  />
+                );
               })
             : null}
         </div>
