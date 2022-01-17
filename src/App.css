@@ -2,15 +2,9 @@ body {
   margin-left: 0%;
   margin-top: 0%;
   margin-right: 0%;
-  font-family: Arial;
+  font-family: "Roboto", sans-serif;
   background-color: rgb(233, 227, 180);
-}
-
-.App {
-  display: flex;
-  flex-direction: row;
-  
-
+  box-sizing: border-box;
 }
 
 .topbar {
@@ -21,7 +15,7 @@ body {
   background-color: rgb(243, 155, 109);
   color: rgb(56, 29, 42);
   margin-right: 0px;
-  font-family: Arial;
+  font-family: "Roboto", sans-serif;
   font-size: larger;
   position: fixed;
 }
@@ -53,10 +47,6 @@ body {
   margin-top: 24vh;
   margin-left: 10px;
   padding: 20px;
-}
-
-.reviewImg {
-  width: 100px;
 }
 
 .reviewCard {
@@ -111,6 +101,160 @@ body {
   margin-top: 24vh;
   margin-left: 10px;
   padding: 20px;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logout {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.userText {
+  font-size: 22px;
+}
+
+.userText p {
+  margin: 0.3em 0;
+}
+
+.userUsername {
+  font-size: 15px;
+}
+
+button {
+  display: inline-block;
+}
+
+button {
+  display: inline-block;
+  padding: 0.7em 1.7em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #3369ff;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+  text-align: center;
+  position: relative;
+}
+button:active {
+  box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+}
+
+.commentBodyForm {
+  min-width: 70vw;
+  min-height: 10vh;
+}
+.postCommentForm {
+  z-index: -1;
+  background-color: rgb(170, 189, 140);
+  padding: 5%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  border-radius: 20px;
+  width: 70vw;
+  margin-left: 8vw;
+}
+
+.usernameTextInput {
+  min-height: 30px;
+}
+
+.login {
+  margin-left: 2vw;
+}
+
+.singleReview {
+  background-color: rgb(62, 105, 144);
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  text-align: justify;
+  padding: 5%;
+  border-radius: 20px;
+  margin-left: 3vw;
+  border-style: double;
+  border-color: rgb(170, 189, 140);
+  border-width: thick;
+  margin-bottom: 2vh;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+}
+
+.reviewImg {
+  position: relative;
+  display: flex;
+  align-items: right;
+  margin-top: -5%;
+  margin-bottom: 0%;
+  margin-left: 10px;
+  width: 15vw;
+  height: 15vw;
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 20px;
+  object-fit: cover;
+  
+}
+
+.homeButton {
+  z-index: 2;
+  margin-top: -10vh;
+  position: fixed;
+}
+
+.reviewCardImg {
+  width: 100px;
+  border-radius: 10%;
+}
+
+.readMore {
+  display: inline;
+}
+
+.likes {
+  margin-right: 50vw;
+}
+
+.singleReviewTitle {
+  display: inline;
+  margin-bottom: 0.1em;
+}
+
+.singleReviewBottomText p{
+  margin-bottom: 0px;
+  margin: 20px;
+  display:inline;
+  margin-right: 5vh;
+  margin-left: 0px;
+}
+.singleReviewBottomText {
+  margin-bottom: 0px;
+}
+
+.singleReviewAuthor {
+  margin-top: 1vh;
+}
+
+.singleReviewBody {
+  width: 50vw;
+}
+
+.imgAndBodyFlex {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* background-color: rgb(170, 189, 140); oliveine

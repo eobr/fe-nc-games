@@ -9,3 +9,8 @@ login stays when refresh the page
 enquire about constantly refreshing comments page
 
 
+STYLING
+like button and likes top right of review card
+category, date and no.of.comments to go along the very bottom of the review card
+this makes more room for bigger pic
+

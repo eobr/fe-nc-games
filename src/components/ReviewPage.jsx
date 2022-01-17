@@ -48,67 +48,86 @@ export default function ReviewPage({ isLoggedIn, userData }) {
     <h1 className="errMsg">{errMsg}</h1>
   ) : reviewInfo ? (
     <div className="reviewPage">
-      <nav>
-        <Link to="/">Home</Link>
+      <nav className="homeButton">
+        <Link to="/">
+          <button>Home</button>
+        </Link>
       </nav>
       <div className="singleReview">
-        <h3>{`${reviewInfo.title}`}</h3>
-        <p>
+        <h3 className="singleReviewTitle">{`${reviewInfo.title}`}</h3>
+        <p className="singleReviewAuthor">
           <b>Author: </b>
           {reviewInfo.owner}
         </p>
-        <p>{`${reviewInfo.review_body}`}</p>
-        <img
-          className="reviewImg"
-          src={reviewInfo.review_img_url}
-          alt="board game"
-        />
-        <p>
-          <b>Votes: </b> {reviewInfo.votes} <b>Category: </b>{" "}
-          {reviewInfo.category
-            ? reviewInfo.category.replaceAll("-", " ")
-            : null}{" "}
-          <b>Date: </b> {/*CAN REMOVE AFTER LOADING PUT IN*/}
-          {reviewInfo.created_at
-            ? reviewInfo.created_at.slice(0, 10)
-            : null}{" "}
-          {/*CAN REMOVE AFTER LOADING PUT IN*/}
-        </p>
-        <p>
-          <b>Comments: </b>
-          {reviewInfo.comment_count}
-        </p>
-        {isLoggedIn ? (
-          <form className="postCommentForm" onSubmit={handlePostComment}>
-            <p>Post a comment!</p>
-            <input
-              className="commentBodyForm"
-              type="text"
-              placeholder="Comment"
-              value={bodyInput}
-              onChange={handleBodyInput}
-            ></input>
-            <br />
-            <button type="submit">Post Comment</button>
-          </form>
-        ) : (
-          <p>Login to post a comment</p>
-        )}
-
-        <div>
-          {comments.length
-            ? comments.map((comment) => {
-                return (
-                  <Comments
-                    comment={comment}
-                    userData={userData}
-                    isLoggedIn={isLoggedIn}
-                    setRefreshComments={setRefreshComments}
-                  />
-                );
-              })
-            : null}
+        <div className="imgAndBodyFlex">
+          <p className="singleReviewBody">{`${reviewInfo.review_body}`}</p>
+          <img
+            className="reviewImg"
+            src={reviewInfo.review_img_url}
+            alt="board game"
+          />
         </div>
+        <p className="singleReviewBottomText">
+          <p>
+            <b>Votes: </b> {reviewInfo.votes}{" "}
+          </p>
+          <p>
+            <b>Category: </b>{" "}
+            {reviewInfo.category
+              ? reviewInfo.category.replaceAll("-", " ")
+              : null}{" "}
+          </p>
+          <p>
+            <b>Date: </b> {/*CAN REMOVE AFTER LOADING PUT IN*/}
+            {reviewInfo.created_at
+              ? reviewInfo.created_at.slice(0, 10)
+              : null}{" "}
+            {/*CAN REMOVE AFTER LOADING PUT IN*/}
+          </p>
+          <p>
+            <b>Comments: </b>
+            {reviewInfo.comment_count}
+          </p>
+        </p>
+      </div>
+      {isLoggedIn ? (
+        <form className="postCommentForm" onSubmit={handlePostComment}>
+          <p>
+            <b>Post a comment!</b>
+          </p>
+          <textarea
+            name="Text1"
+            cols="40"
+            rows="5"
+            className="commentBodyForm"
+            type="text"
+            placeholder="Comment"
+            value={bodyInput}
+            onChange={handleBodyInput}
+          ></textarea>
+          {/* <input
+              
+            ></input> */}
+          <br />
+          <button type="submit">Post Comment</button>
+        </form>
+      ) : (
+        <p>Login to post a comment</p>
+      )}
+
+      <div>
+        {comments.length
+          ? comments.map((comment) => {
+              return (
+                <Comments
+                  comment={comment}
+                  userData={userData}
+                  isLoggedIn={isLoggedIn}
+                  setRefreshComments={setRefreshComments}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   ) : null;

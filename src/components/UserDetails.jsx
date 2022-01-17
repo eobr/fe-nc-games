@@ -41,18 +41,18 @@ export default function UserDetails({
     if (event) event.preventDefault();
     if (!username) username = usernameInput;
     console.log(username);
-    if (username !== ""){
-    fetchUserByUsername(username)
-      .then((userInfo) => {
-        setUserData(userInfo);
-        setIsLoggedIn(true);
-        setUsernameInput("");
-        setLoginErr("");
-        localStorage.setItem(LOCAL_STORAGE_USER_DATA, userData.username);
-      })
-      .catch(() => {
-        setLoginErr("User not found!");
-      });
+    if (username !== "") {
+      fetchUserByUsername(username)
+        .then((userInfo) => {
+          setUserData(userInfo);
+          setIsLoggedIn(true);
+          setUsernameInput("");
+          setLoginErr("");
+          localStorage.setItem(LOCAL_STORAGE_USER_DATA, userData.username);
+        })
+        .catch(() => {
+          setLoginErr("User not found!");
+        });
     }
   };
 
@@ -61,8 +61,10 @@ export default function UserDetails({
       {isLoggedIn ? (
         <>
           <img className="avatar" src={userData.avatar_url} alt="user avatar" />
-          <p>{userData.name}</p>
-          <p>{userData.username}</p>
+          <div className="userText">
+            <p><b>{userData.name}</b></p>
+            <p className="userUsername">@{userData.username}</p>
+          </div>
           <button className="logout" onClick={handleLogout}>
             Logout
           </button>
@@ -70,7 +72,7 @@ export default function UserDetails({
         </>
       ) : (
         <form className="login" onSubmit={handleLogin}>
-          <input
+          <input className="usernameTextInput"
             type="text"
             placeholder="Username"
             onChange={handleUsernameChange}
