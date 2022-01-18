@@ -33,38 +33,45 @@ export default function ReviewCard({ review, isLoggedIn, sortBy }) {
           <b>Author: </b>
           {review.owner}
         </p>
-        <p className="readMore">
-          {`${review.review_body.slice(0, 50) + "... "}`}
-          <nav className="readMore">
-            <Link to={`/reviews/${review.review_id}`}>Read more!</Link>
-          </nav>
-        </p>
-        <br/>
+        <div className="imgAndBodyFlex">
+          <p className="readMore">
+            {`${review.review_body.slice(0, 50) + "... "}`}
+            <nav className="readMore">
+              <Link to={`/reviews/${review.review_id}`}>Read more!</Link>
+            </nav>
+          </p>
 
-        <img className="reviewCardImg" src={review.review_img_url} />
-        <p>
-          <b>Category: </b> {formatCategory(review.category)} <b>Date: </b>{" "}
-          {review.created_at.slice(0, 10)}
-        </p>
-        <p className="likes">
-          {" "}
-          <b>Likes: </b> {amountLikes}{" "} 
-        
-        {liked ? (
-          <button onClick={handleUnlike} className="likeButton">
-            👎
-          </button>
-        ) : (
-          <button className="unlikeButton" onClick={handleLike}>
-            👍
-          </button>
-        )}</p>
-        {isLoggedIn ? null : <p>Please login to vote!</p>}
-
-        <p>
-          <b>Comments: </b>
-          {review.comment_count}{" "}
-        </p>
+          <img className="reviewCardImg" src={review.review_img_url} />
+        </div>
+        <div className="reviewCardFlex">
+          <div className="reviewCardBottomText">
+            <p>
+              <b>Category: </b> {formatCategory(review.category)}
+            </p>{" "}
+            <p>
+              <b>Date: </b> {review.created_at.slice(0, 10)}
+            </p>
+            <p>
+              <b>Comments: </b>
+              {review.comment_count}{" "}
+            </p>
+          </div>
+          <p className="likes">
+            {" "}
+            {liked ? (
+              <button onClick={handleUnlike} className="likeButton">
+                👎
+              </button>
+            ) : (
+              <button className="unlikeButton" onClick={handleLike}>
+                👍
+              </button>
+            )}
+            <br />
+            <b>Likes: </b> {amountLikes}{" "}
+            {isLoggedIn ? null : <p>Please login to vote!</p>}
+          </p>
+        </div>
       </div>
       <br />
     </>

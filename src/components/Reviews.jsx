@@ -85,7 +85,6 @@ export default function Reviews({isLoggedIn}) {
             })}
           </select>
         </label>
-        <button type="submit">Ok</button>
       </form>
       <div>
         {reviewsList.map((review) => {

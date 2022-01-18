@@ -27,7 +27,7 @@ body {
   position: fixed;
   margin-top: 0%;
   right: 0px;
-  width: 300px;
+  width: 400px;
   padding: 10px;
 }
 
@@ -52,10 +52,12 @@ body {
 .reviewCard {
   z-index: -1;
   background-color: rgb(170, 189, 140);
-  padding: 5%;
+  padding: 2%;
   border-radius: 20px;
   width: 70vw;
-  margin-left: 8vw;
+  margin-left: 17%;
+  padding-bottom: 0px;
+  
 }
 
 .filter {
@@ -197,7 +199,7 @@ button:active {
   position: relative;
   display: flex;
   align-items: right;
-  margin-top: -5%;
+  margin-top: -0%;
   margin-bottom: 0%;
   margin-left: 10px;
   width: 15vw;
@@ -216,8 +218,18 @@ button:active {
 }
 
 .reviewCardImg {
-  width: 100px;
-  border-radius: 10%;
+  position: relative;
+  display: flex;
+  align-items: right;
+  margin-top: -10%;
+  margin-bottom: 0%;
+  margin-left: 10px;
+  width: 15vw;
+  height: 15vw;
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
 .readMore {
@@ -255,6 +267,15 @@ button:active {
 .imgAndBodyFlex {
   display: flex;
   justify-content: space-between;
+}
+
+.reviewCardFlex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes {
+  margin-right: 0px;
 }
 
 /* background-color: rgb(170, 189, 140); oliveine
