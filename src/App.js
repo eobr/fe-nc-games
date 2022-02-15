@@ -15,7 +15,6 @@ import PageNotFound from "./components/PageNotFound";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(undefined);
-  
 
   return (
     <BrowserRouter>
@@ -27,19 +26,19 @@ function App() {
         <UserDetails
           setIsLoggedIn={setIsLoggedIn}
           isLoggedIn={isLoggedIn}
-          userData={userData} setUserData={setUserData}          
+          userData={userData}
+          setUserData={setUserData}
         />
         <Routes>
-          <Route path="/" element={<Reviews isLoggedIn={isLoggedIn}/>}/>
+          <Route path="/" element={<Reviews isLoggedIn={isLoggedIn} />} />
           <Route
             path="/reviews/:review_id"
-            element={<ReviewPage isLoggedIn={isLoggedIn} userData={userData}/>}
+            element={<ReviewPage isLoggedIn={isLoggedIn} userData={userData} />}
           />
-          <Route path="*" element={<PageNotFound/>}/>
-          
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
-    </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 

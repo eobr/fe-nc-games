@@ -28,16 +28,11 @@ export default function Reviews({isLoggedIn}) {
   };
 
   useEffect(() => {
-    console.log(sortBy, selectedCategory, order);
       fetchReviews(sortBy, selectedCategory, order).then((data) => {
       setReviewsList(data);
     });
   }, [sortBy, selectedCategory, order])
   const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   fetchReviews(sortBy, selectedCategory, order).then((data) => {
-  //     setReviewsList(data);
-  //   });
   };
 
   useEffect(() => {

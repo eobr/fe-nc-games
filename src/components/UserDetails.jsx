@@ -21,7 +21,6 @@ export default function UserDetails({
   useEffect(() => {
     const storedUsername = localStorage.getItem(LOCAL_STORAGE_USER_DATA);
     if (storedUsername) {
-      console.log(storedUsername);
       handleLogin(undefined, storedUsername);
     }
   }, []);
@@ -40,7 +39,6 @@ export default function UserDetails({
   const handleLogin = (event, username) => {
     if (event) event.preventDefault();
     if (!username) username = usernameInput;
-    console.log(username);
     if (username !== "") {
       fetchUserByUsername(username)
         .then((userInfo) => {
@@ -68,7 +66,6 @@ export default function UserDetails({
           <button className="logout" onClick={handleLogout}>
             Logout
           </button>
-          {/* SELL AN ITEM LINK */}
         </>
       ) : (
         <form className="login" onSubmit={handleLogin}>

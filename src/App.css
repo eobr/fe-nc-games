@@ -278,5 +278,9 @@ button:active {
   margin-right: 0px;
 }
 
+.calcBtns button {
+    margin-top: 20%;  
+}
+
 /* background-color: rgb(170, 189, 140); oliveine
 background-color: rgb(56, 29, 42); dark purple */

@@ -14,7 +14,6 @@ export default function ReviewCard({ review, isLoggedIn, sortBy }) {
     }
   };
   useEffect(() => {
-    console.log(review.votes);
     setAmountLikes(review.votes);
   }, [sortBy]);
   const handleUnlike = () => {

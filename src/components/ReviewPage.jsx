@@ -78,11 +78,10 @@ export default function ReviewPage({ isLoggedIn, userData }) {
               : null}{" "}
           </p>
           <p>
-            <b>Date: </b> {/*CAN REMOVE AFTER LOADING PUT IN*/}
+            <b>Date: </b>
             {reviewInfo.created_at
               ? reviewInfo.created_at.slice(0, 10)
               : null}{" "}
-            {/*CAN REMOVE AFTER LOADING PUT IN*/}
           </p>
           <p>
             <b>Comments: </b>
@@ -105,9 +104,6 @@ export default function ReviewPage({ isLoggedIn, userData }) {
             value={bodyInput}
             onChange={handleBodyInput}
           ></textarea>
-          {/* <input
-              
-            ></input> */}
           <br />
           <button type="submit">Post Comment</button>
         </form>

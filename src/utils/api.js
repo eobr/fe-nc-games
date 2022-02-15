@@ -11,7 +11,6 @@ export const fetchUserByUsername = (username) => {
 };
 
 export const fetchReviews = (sort_by, category, order) => {
-  console.log(sort_by)
   return boardGamesAPI
     .get(`/reviews`, { params: { sort_by, category, order } })
     .then((res) => {
